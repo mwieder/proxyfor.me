@@ -32,7 +32,7 @@
             message telling them what vote has been calculated for them based on votes of the 5 proxies who are most similar
             to them. They'll then have the weekend to look at how the proxy candidates voted and why, and to override the
             calculated vote if they disagree with it. Voting closes Sunday at midnight UTC and an email/text will sent to
-            all direct and proxy voters with the final tally and and announcement of the next weekend's proposal(s).</p>
+            all direct and proxy voters with the final tally and announcement of the next weekend's proposal(s).</p>
         <p>If you have the time and inclination to do the research and consideration necessary to cast a direct vote and want
             to make yourself available as a proxy to other voters you'll have at least 10 days on each proposal to do so:
             The next proposal is locked into the queue every Monday the week prior to the General Vote. You'll have access
@@ -149,17 +149,17 @@
                 its total lack of any scientific justification.  There are a wide variety of examples, both anecdotal and
                 in the scientific literature, that show that people invariably use inappropriate decision criteria when choosing
                 representatives. Instead of actually evaluating whether their chosen representative will cast &quot;correct
-                votes&quot; for them, they use spurious characteristcs like physical appearance, name familiarity, alleged
+                votes&quot; for them, they use spurious characteristics like physical appearance, name familiarity, alleged
                 experience or expertise in some area, demographic information (race, gender, age, etc.) or whether the candidate
                 is &quot;someone you'd like to have a beer with&quot;. Of course the most egregious example of this is the
-                fact that 88% of German voters approved Hitler as dictator in the 1934 referrendum, a fact from which one
+                fact that 88% of German voters approved Hitler as dictator in the 1934 referendum, a fact from which one
                 can only conclude one of two things:</p>
             <ol>
                 <li>People are just stupid and can't be trusted to make rational decisions about anything.</li>
-                <li>There's something about choosing appropriate representatives that is intrisically extremely difficult and
+                <li>There's something about choosing appropriate representatives that is intrinsically extremely difficult and
                     so not something that most voters are even capable of doing.</li>
             </ol>
-            <p>proxyfor.me is founded on the second theory, and so instead of allowing you to choose your own representatives,
+            <p>proxyfor.me is founded on the second theory and so instead of allowing you to choose your own representatives,
                 the system will use math and science to do it for you. Even better: Rather than limiting you to just one
                 or a few representatives (as other systems do) proxyfor.me will always give you 5
                 <em>and</em> will automatically redo the matching for every single vote. The latter feature also gets around
@@ -172,12 +172,12 @@
                     And the very people who do set this up are the very people most likely to cast a direct vote and so they
                     don't actually benefit from it (only 3% of votes in that study were cast through delegates).</li>
                 <li>The people who do use it pick inappropriate delegates (i.e., there is a low correlation between the direct
-                    voting record of an indvidual and the delegates they choose).</li>
+                    voting record of an individual and the delegates they choose).</li>
                 <li>When your delegate doesn't vote you don't vote either and so your preferences are simply not reflected in
                     the final decision.</li>
                 <li>Transitive voting (redelegation) which was designed to partially fix problem #3 makes problem #2 significantly
                     worse, though most of the time it just has no effect at all because people chosen as delegates haven't
-                    choosen their own delegates (problem #1)</li>
+                    chosen their own delegates (problem #1)</li>
             </ol>
             <p>A dead giveaway that a proponent of Liquid Democracy or even of conventional representative democracy is laboring
                 under a fundamental misconception of the way political decisionmaking actually works is when you see them
@@ -260,7 +260,7 @@
                 agree that there is a problem here before we go off and hobble the system in an effort to prevent a problem
                 that is most likely only theoretical.</p>
         </div>
-        <h5><a (click)="show === 11 ? show = 0 : show = 11">How is elegibility authentication done?</a></h5>
+        <h5><a (click)="show === 11 ? show = 0 : show = 11">How is eligibility authentication done?</a></h5>
         <div *ngIf="show === 11">
             <p>It isn't, for now: Just as voter fraud is extremely rare in representative democracies it's very unlikely that
                 the collective decision on any specific proposal in proxyfor.me will be decided by fraudulent voters. Nevertheless,
@@ -274,14 +274,14 @@
                 ballot box stuffing (or &quot;loss&quot; of ballot boxes from key districts), and under/overcounts due to
                 faulty hardware and/or software which always seem to affect key districts more than those that don't really
                 matter. Being on-line and available 24/7 proxyfor.me is also far more resistant to voter suppression efforts
-                (gerrymandering, unecessarily strict voter ID requirements, limiting voting hours or locations, etc.). From
+                (gerrymandering, unnecessarily strict voter ID requirements, limiting voting hours or locations, etc.). From
                 an engineering perspective it makes a lot more sense to deal with problems we already know have an effect
                 instead of pre-emptively restricting the design in an attempt to solve problems there is little evidence
                 even exist, let alone have a significant effect on outcomes.</p>
             <p>Eventually, however, a correspondence between screen names in proxyfor.me and human beings in the real world
                 will need to be established. This could be as simple as having each screen name claim an entry in the public
                 voter-registration database (the incentive being that if you don't claim your name, you're not doing your
-                civic duty and also opening up the possiblity that someone else will cast a fraudulent vote in your name).
+                civic duty and also opening up the possibility that someone else will cast a fraudulent vote in your name).
                 Or it could be as complex as collecting a DNA sample and finger print from each individual (which is really
                 the only completely accurate way to ensure that a specific individual is matched to each screen name). The
                 authentication method that will be used for proxyfor.me, and how it will be bootstrapped using our existing
@@ -299,7 +299,8 @@
         <h5><a (click)="show === 13 ? show = 0 : show = 13">Why can I continue to vote on closed proposals?</a></h5>
         <div *ngIf="show === 13">
             <p>Public opinion, and indeed a society's core moral code, is a fluid thing: As technology advances and new information
-                becomes available it is expected to shift (see <a href="http://www.matchism.org/internal-moral-codes/" target="_blank">http://www.matchism.org/internal-moral-codes/</a>                for more on this). Allowing people to continously revisit and revote old policies facilitates this moral
+                becomes available it is expected to shift (see <a href="http://www.matchism.org/internal-moral-codes/" target="_blank">http://www.matchism.org/internal-moral-codes/</a>               
+                for more on this). Allowing people to continuously revisit and revote old policies facilitates this moral
                 progressivism. If the decision on a previously-voted proposal is reversed by follow-up voting, that proposal
                 will be updated (to include current information and cost estimates) and resubmitted into the queue. Feel
                 free to change your mind and revote any past proposal, or to cast a direct vote over a proxy vote, but note
@@ -309,10 +310,10 @@
         <h5><a (click)="show === 14 ? show = 0 : show = 14">Why can't I see the vote totals until after the closing date?</a></h5>
         <div *ngIf="show === 14">
             <p>Because they're likely to be misleading and so could affect the final outcome: proxyfor.me, like any real-time
-                direct democracy system (including many social media forums), is susceptable to &quot;brigading&quot;, where
-                a small faction of like-minded indviduals can disrupt the system by all casting the same vote soon after
+                direct democracy system (including many social media forums), is susceptible to &quot;brigading&quot;, where
+                a small faction of like-minded individuals can disrupt the system by all casting the same vote soon after
                 a proposal becomes available. To prevent this from working to discourage voters from even investigating a
-                proposal because it may be mispercieved as a &quot;lost cause&quot;, these early votes will be hidden from
+                proposal because it may be misperceived as a &quot;lost cause&quot;, these early votes will be hidden from
                 view until the final vote is tabulated. Ultimately, however, brigading in particular is unlikely to have
                 any effect at all in the final outcome: Because proxy matches are based on widely varying personality characteristics,
                 a small group of ideologically-similar extremist voters will not match up to the much larger numbers of more
@@ -333,7 +334,7 @@
         <div *ngIf="show === 16">
             <p>The email address and/or phone number the system will use to communicate with you will never be disclosed to
                 anyone outside the administrators of the system. If you are particularly sensitive about the possibility
-                that the system will get hacked and that information disclosed, we recommend creating (and validating) auxiliarly
+                that the system will get hacked and that information disclosed, we recommend creating (and validating) auxiliary
                 contact information, such as a dedicated email address or Google Voice number, forwarded to your main contact
                 address/number. Everything else, however, including your screen name, your personality profile, your voting
                 record, and your posts are by definition public information that everyone else must have access to so that
@@ -375,7 +376,7 @@
                 grow to the point that the majority of them are represented in one or more Localities. At that point a simple
                 vote will transfer power for final decisions of &quot;the government&quot; directly to The People, rendering
                 their elected legislative officials and those offices obsolete. Because those representatives will be closely
-                following this process and adjusting their behavior accordingly (to faciliate their being re-electable) the
+                following this process and adjusting their behavior accordingly (to facilitate their being re-electable) the
                 transition will be gradual and in most cases undetectable. In the end, the same people who work in the executive
                 and judicial branches of government will continue to do so, only the decisionmakers (the elected legislators)
                 will be replaced. All the existing laws, policies, taxation and public support systems, and infrastructure
@@ -416,7 +417,7 @@
                 be a pronounced anti-conservative bias in this system when compared with traditional representative democracy,
                 especially as it is practiced in the US. There are two causes for that, one short term, one long. The first
                 is that early-adopters of this system, as with all new things, will tend to be younger, more educated, and
-                higher in the Big-5 dimension of &quot;openness&quot;. All of these are negatively correllated with conservatism.
+                higher in the Big-5 dimension of &quot;openness&quot;. All of these are negatively correlated with conservatism.
                 But it's not really the same as &quot;liberalism&quot;, at least as espoused by US Democrats because it will
                 actually more frequently resemble US libertarianism or classical liberalism as is more commonly found in
                 Europe (calls for greater personal freedom, especially with respect to drug use, greater acceptance of capitalism,
@@ -451,7 +452,7 @@
                 that proxyfor.me is a fully independent decisionmaking system and that it has been designed solely as a tool
                 to be used by them to set public policy. Using it for anything else, or tying it to any system that is not
                 specifically designed to facilitate achieving that goal, is an unacceptable security risk as well as being
-                a distraction and deligitimization of the founding principles.</p>
+                a distraction and delegitimization of the founding principles.</p>
         </div>
         <h5><a (click)="show === 24 ? show = 0 : show = 24">What about budgeting?</a></h5>
         <div *ngIf="show === 24">
@@ -469,7 +470,7 @@
                 be generic enough that they could be adopted by any locality (city/county/metropolitan area). At some point
                 proposals with outcomes that can vary among localities will be introduced with the outcomes being decided
                 by the voting of the citizens in that locality. For example a multiple-choice option may be provided for
-                building height limits, with some localities chosing to impose no limits and other chosing to impose a locality-wide
+                building height limits, with some localities choosing to impose no limits and other choosing to impose a locality-wide
                 maximum height, all decided with a single proposal. Eventually even more local decisions will be merged in
                 (or be decided in a separate but parallel locality-specific system), such as those need to regulate the local
                 executive branch, or for land use decisions affecting only that locality (e.g., approval of a specific new
@@ -506,7 +507,7 @@
         <p>Please email bug reports and feature requests to support@proxyfor.me or post them to the appropriate forum at matchism.org:
             <a href="http://www.matchism.org/forum" target="_blank">http://www.matchism.org/forum</a>. Be sure to include
             details on the OS you're using and the browser version (from the &quot;About&quot; dialog). Also include any
-            information from the browser console: To open that, choose &quot;Developer Tools&quot; from the brower settings
+            information from the browser console: To open that, choose &quot;Developer Tools&quot; from the broswer settings
             menu (usually in the upper-left corner) or right-click (control-click on Mac) on the page and choose &quot;Inspect
             element&quot;, then make sure the &quot;Console&quot; tab is selected.</p>
         <p>This Single Page Application (SPA) was developed using the MEAN stack (MongoDB NoSQL database, Express web server,
@@ -519,7 +520,7 @@
             lot of optimization remaining to be done (load times should significantly decrease when that's all done).</p>
         <p>The system is currently being hosted on Amazon's AWS in the free tier (t2.micro ECS), but it has been designed to
             scale up easily. A wide variety of upgrades and optimizations are available which will ensure that the system
-            can grow to accomodate however many people sign up (up to billions!), although at some point external funding
+            can grow to accommodate however many people sign up (up to billions!), although at some point external funding
             (probably crowdfunding) will be necessary to continue to grow.</p>
         <p>There are several limitations in the design that are being imposed by the Angular 2 router which is pretty weak:
             There seems to be no way to make bookmarks to internal &quot;pages&quot; work, nor is it straightforward to create
