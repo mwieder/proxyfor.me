@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<!-- debug index.html -->
+
+<head>
+  <meta property="og:url" content="https://www.proxyfor.me/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="proxyfor.me: Democracy Solved">
+  <meta property="og:description" content="Let’s create a world without politicians, where public policy decisions reflect the
+  will of ALL the people, not just the powerful or politically active. And all it takes is 15 minutes of your time to
+  get you a lifetime of quality representation.">
+  <meta property="og:image" content="http://www.proxyfor.me/proxyfor-me.png">
+  <meta property="og:site_name" content="proxyfor.me">
+  <meta property="fb:app_id" content="966242223397117" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@proxyfor_me">
+  <meta name="twitter:creator" content="@proxyfor_me">
+  <meta name="twitter:title" content="proxyfor.me: Democracy Solved">
+  <meta name="twitter:description" content="Let’s create a world without politicians. All it takes is 15 minutes to
+  get you a lifetime of quality representation.">
+  <meta name="twitter:image" content="http://www.proxyfor.me/proxyfor-me.png">  
+  <meta name="twitter:image:alt" content="proxyfor.me screenshot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <base href="/">
+  <title>proxyfor.me</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- IE required polyfills, in this exact order -->
+  <script src="../node_modules/core-js/client/shim.min.js"></script>
+  <script src="../node_modules/zone.js/dist/zone.js"></script>
+  <script src="../node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="../node_modules/systemjs/dist/system.src.js"></script>
+
+  <script>
+    System.import('src/system-config.js').then(function () {
+      System.import('main');
+    }).catch(console.error.bind(console));
+  </script>
+</head>
+
+<body>
+  <my-app>
+    <div class="loader"></div>
+    <div class="loaderlabel">Loading proxyfor.me...</div>
+  </my-app>
+</body>
+
+</html>

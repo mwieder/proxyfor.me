@@ -1,0 +1,5 @@
+{
+    "accessKeyId": "your aws access id",
+    "secretAccessKey": "your aws secret",
+    "region": "us-west-2"
+}

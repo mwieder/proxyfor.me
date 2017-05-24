@@ -1,0 +1,27 @@
+<nav>
+  <ul>
+    <li><span class="title">proxyfor.me (Beta 1)</span></li>
+    <li><span [hidden]="!globalService.myProfile.screen_name"><a (click)="logout()">Log out</a></span></li>
+    <span *ngIf="globalService.myProfile.screen_name === 'gm'">
+      <a [routerLink]="['/edit/profile']">Edit Profile...</a>
+    </span>
+    <li><a routerLink="/help" routerLinkActive="active">Help</a></li>
+    <li><span *ngIf="globalService.myProfile.screen_name">
+      <a [routerLink]="['/profile/', globalService.myProfile.screen_name]" routerLinkActive="active">My Profile</a></span></li>
+    <li><span *ngIf="!globalService.myProfile.screen_name"><a routerLink="/login">Log in</a></span></li>
+    <li><a routerLink="/proposals" routerLinkActive="active">All Proposals</a></li>
+  </ul>
+</nav>
+<div style="clear: both;"></div>
+<div class="header-bar"></div>
+<nav>
+  <div *ngIf="globalService.proposalHeads">
+    <a [routerLink]="['proposal/', currentHead.id + 'v' + currentHead.version]" routerLinkActive="active">Current Proposal</a>{{currentHead.title}}<br>
+    <a [routerLink]="['proposal/', lastHead.id + 'v' + lastHead.version]" routerLinkActive="active">Last Proposal</a>{{lastHead.title}}
+    <span class="results">{{lastHead.yes_votes > lastHead.no_votes ? "Passed" : "Failed"}}
+      <span class="yes">{{lastHead.yes_votes}}</span> to <span class="no">{{lastHead.no_votes}}</span></span><br>
+    <a [routerLink]="['/proposal/', nextHead.id  + 'v' + nextHead.version]" routerLinkActive="active">Next Proposal</a>{{nextHead.title}}
+  </div>
+</nav>
+<div class="header-bar"></div>
+<router-outlet></router-outlet>
