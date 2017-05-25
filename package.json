@@ -46,7 +46,7 @@
   "devDependencies": {
     "@types/core-js": "^0.9.35",
     "browserify": "^14.1.0",
-    "typescript": "^2.0.3",
+    "typescript": "^2.3.3",
     "uglifyjs": "^2.4.10"
   }
 }

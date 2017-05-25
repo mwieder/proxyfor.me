@@ -10,4 +10,5 @@ ui/src/*.map
 ui/dist/*.*
 node_modules
 dump
+results
 bootstrap.min.css
