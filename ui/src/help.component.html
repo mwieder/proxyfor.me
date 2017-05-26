@@ -299,8 +299,7 @@
         <h5><a (click)="show === 13 ? show = 0 : show = 13">Why can I continue to vote on closed proposals?</a></h5>
         <div *ngIf="show === 13">
             <p>Public opinion, and indeed a society's core moral code, is a fluid thing: As technology advances and new information
-                becomes available it is expected to shift (see <a href="http://www.matchism.org/internal-moral-codes/" target="_blank">http://www.matchism.org/internal-moral-codes/</a>               
-                for more on this). Allowing people to continuously revisit and revote old policies facilitates this moral
+                becomes available it is expected to shift (see <a href="http://www.matchism.org/internal-moral-codes/" target="_blank">http://www.matchism.org/internal-moral-codes/</a>                for more on this). Allowing people to continuously revisit and revote old policies facilitates this moral
                 progressivism. If the decision on a previously-voted proposal is reversed by follow-up voting, that proposal
                 will be updated (to include current information and cost estimates) and resubmitted into the queue. Feel
                 free to change your mind and revote any past proposal, or to cast a direct vote over a proxy vote, but note
@@ -376,12 +375,12 @@
                 grow to the point that the majority of them are represented in one or more Localities. At that point a simple
                 vote will transfer power for final decisions of &quot;the government&quot; directly to The People, rendering
                 their elected legislative officials and those offices obsolete. Because those representatives will be closely
-                following this process and adjusting their behavior accordingly (to facilitate their being re-electable) the
-                transition will be gradual and in most cases undetectable. In the end, the same people who work in the executive
-                and judicial branches of government will continue to do so, only the decisionmakers (the elected legislators)
-                will be replaced. All the existing laws, policies, taxation and public support systems, and infrastructure
-                will carry over, although of course some of these will subsequently be changed by The People as they vote
-                to do so.</p>
+                following this process and adjusting their behavior accordingly (to facilitate their being re-electable)
+                the transition will be gradual and in most cases undetectable. In the end, the same people who work in the
+                executive and judicial branches of government will continue to do so, only the decisionmakers (the elected
+                legislators) will be replaced. All the existing laws, policies, taxation and public support systems, and
+                infrastructure will carry over, although of course some of these will subsequently be changed by The People
+                as they vote to do so.</p>
         </div>
         <h5><a (click)="show === 20 ? show = 0 : show = 20">Replace all governments? Surely you jest...</a></h5>
         <div *ngIf="show === 20">
@@ -470,11 +469,11 @@
                 be generic enough that they could be adopted by any locality (city/county/metropolitan area). At some point
                 proposals with outcomes that can vary among localities will be introduced with the outcomes being decided
                 by the voting of the citizens in that locality. For example a multiple-choice option may be provided for
-                building height limits, with some localities choosing to impose no limits and other choosing to impose a locality-wide
-                maximum height, all decided with a single proposal. Eventually even more local decisions will be merged in
-                (or be decided in a separate but parallel locality-specific system), such as those need to regulate the local
-                executive branch, or for land use decisions affecting only that locality (e.g., approval of a specific new
-                shopping center or housing development).</p>
+                building height limits, with some localities choosing to impose no limits and other choosing to impose a
+                locality-wide maximum height, all decided with a single proposal. Eventually even more local decisions will
+                be merged in (or be decided in a separate but parallel locality-specific system), such as those need to regulate
+                the local executive branch, or for land use decisions affecting only that locality (e.g., approval of a specific
+                new shopping center or housing development).</p>
         </div>
         <h5><a (click)="show === 26 ? show = 0 : show = 26">What's the flagging policy?</a></h5>
         <div *ngIf="show === 26">
@@ -492,9 +491,10 @@
     <tab tabTitle="Validating Results">
         <p></p>
         <p>For those who want to validate the operation of the system, the full source for both the client and server components
-            of proxyfor.me are available on GitHub as &quot;proxyfor.me&quot;. This is an open source project and is distributed
-            under a very permissive license to ensure that anyone who wants to can verify correct operation or produce derivative
-            systems to test new ideas. Contributions are welcome!</p>
+            of proxyfor.me are available on GitHub as <a href="https://github.com/metamerman/proxyfor.me" target="_blank">https://github.com/metamerman/proxyfor.me</a>.
+            This is an open source project and is distributed under a very permissive license to ensure that anyone
+            who wants to can verify correct operation or produce derivative systems to test new ideas. Contributions are
+            welcome!</p>
         <p>The results of each decision are produced automatically as the closing emails are being sent out and stored in the
             "results" directory. There are three files for each closed proposal: proposal.json, directvotes.txt, and proxyvotes.txt.
             The latter two are tab-delimited files containing a timestamp, screen name, vote, and the two sets of matching
