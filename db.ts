@@ -466,8 +466,8 @@ export function init(): Promise<boolean> {
     let CronJob = require('cron').CronJob;
     //       new CronJob('0 0 * * * *', emailMatches, null, true, 'UTC'); // every hour on the half hour
     //       new CronJob('0 30 * * * *', emailResults, null, true, 'UTC'); // every hour on the hour
-//    new CronJob('0 0 0 * * 6', emailMatches, null, true, 'UTC'); // calculate automatch midnight Friday
-//    new CronJob('0 0 0 * * 1', emailResults, null, true, 'UTC'); // calculate votes and update proposal midnight Sunday
+    //    new CronJob('0 0 0 * * 6', emailMatches, null, true, 'UTC'); // calculate automatch midnight Friday
+    //    new CronJob('0 0 0 * * 1', emailResults, null, true, 'UTC'); // calculate votes and update proposal midnight Sunday
 
     return new Promise((resolve, reject) => {
         MongoClient.connect('mongodb://localhost:27017/matchdb')
@@ -676,16 +676,6 @@ export function setProposal(token: string, proposal: amProposal): Promise<string
     });
 }
 
-function crank() {
-    return new Promise((resolve, reject) => {
-        emailMatches();
-        setTimeout(() => {
-            emailResults();
-        }, 20000);
-        resolve(null);
-    });
-}
-
 export function flag(t: string, p: amPost): Promise<string> {
     return new Promise((resolve, reject) => {
         db.collection("Profile").findOne({ token: t })
@@ -774,8 +764,13 @@ export function post(t: string, p: amPost): Promise<string> {
                 if (voter.status === "n")
                     return reject("Authorization failed: Posting denied due to abuse");
                 if (p.category === "q") {
-                    if (voter.screen_name === "gm")
-                        return crank();
+                    if (voter.screen_name === "gm") {
+                        emailMatches();
+                        setTimeout(() => {
+                            emailResults();
+                        }, 20000);
+                        resolve(null);
+                    }
                     else {
                         db.collection("Proposal").findOne({ id: p.proposal })
                             .then(proposal => {

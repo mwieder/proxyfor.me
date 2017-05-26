@@ -22,8 +22,10 @@ When run with an empty database the template proposals in "proposals.json" will 
 Real raw data (via mongodump and mongorestore, albeit with profile contact information redacted) will be made available upon request to gm@proxyfor.me for more advanced testing or data analysis.
 
 # To-do list
-The highest priority upcoming project is to bundle the client into apps that can be distributed in the Apple and Google app stores and then extend those apps to take advantage of native features (e.g., via PhoneGap).
+Need to make registration and voting more bot-resistant (captcha, email validation, ip-filtering, etc.)
 
-Next up is a budgeting system so that the same mechanism used for proposal matching can be applied to tweaking and approving a budget.
+Bundle the client into apps that can be distributed in the Apple and Google app stores and then extend those apps to take advantage of native features (e.g., via PhoneGap).
+
+Create a budgeting system so that the same mechanism used for proposal matching can be applied to tweaking and approving a budget.
 
 Eventually the system will need to be extended to support acquisition and maintenance of Credentials and for maintaining tax and health-care records.
