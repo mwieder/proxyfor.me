@@ -10,13 +10,50 @@
     </nav>
   </div>
   <tabs>
-    <tab tabTitle="Matching" [active]="globalService.activeTab === 'Matching'">
+    <div *ngIf="doMe">
+      <tab tabTitle="Mini Match" [active]="globalService.activeTab === 'Mini Match'">
+        <div *ngIf="doMe">
+          <p>To get your proxy matches and enable voting please fill out either this short form, or the complete form on the
+            next tab. The long form will of course get you, and everyone who might be able to use your vote as a proxy, better
+            accuracy, but this one provides 80% of the benefit in less than one minute whereas the long form takes roughly
+            10 minutes. Note that you can always come back later and change your answers or fill out the long form.</p>
+          <p>Once you have completed all the questions click the &quot;Submit&quot; button at the bottom.</p><br>
+          <p>This first set of questions is a brief personality assessement for which you specify the degree to which you agree
+            with each of the statements:</p>
+          <p>I ({{profile.screen_name}}) see myself as someone who...</p>
+          <table>
+            <tr *ngFor="let i of mini_b5i">
+              <td>{{globalService.b5a[i]}}</td>
+              <td>Strongly Disagree</td>
+              <td *ngFor="let item of range">
+                <input type="radio" [name]="'mb' + i" class="bigradio" (click)="b5r[i] = item" [checked]="item == b5r[i]">
+              </td>
+              <td>Strongly Agree</td>
+            </tr>
+          </table><br><br>
+          <p>This second set of questions assesses your perception of how your current government manages the resources
+            (time, money, attention) we expend on them, from "Way too little", through "About right", to "Way too much":</p>
+            <table>
+              <tr *ngFor="let i of mini_ii">
+                <td>{{globalService.ia[i]}}</td>
+                <td>Way too little</td>
+                <td *ngFor="let item of range">
+                  <input type="radio" [name]="'mi' + i" class="bigradio" (click)="ir[i] = item" [checked]="item == ir[i]">
+                </td>
+                <td>Way too much</td>
+              </tr>
+            </table><br>
+            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+        </div>
+      </tab>
+    </div>
+    <tab tabTitle="Full Match" [active]="globalService.activeTab === 'Full Match'">
       <div *ngIf="doMe">
         <p>To match you with the people who would most likely vote like you would, it is necessary to collect some information
           about you and how you see the world. There are two sets of statements, the first relate to general personality
-          characteristics, and the second set to your priorities and perceptions of how power is distributed in society. Take
-          your time and consider each statement carefully: The more accurate your responses are, the better the matches the
-          system will be able to compute for you, and the less time you'll have to spend examining and possibly over-riding
+          characteristics, and the second set to your priorities and perceptions of how power is distributed in society.
+          Take your time and consider each statement carefully: The more accurate your responses are, the better the matches
+          the system will be able to compute for you, and the less time you'll have to spend examining and possibly over-riding
           the proxies selected for you. It should take less than 10 minutes, and note that you can come back and update your
           responses at any time.</p>
         <p>Once you have completed all the questions click the &quot;Submit&quot; button at the bottom.</p><br>
@@ -26,19 +63,16 @@
           agree nor disagree&quot;.
         </p>
         <h4>I ({{profile.screen_name}}) see myself as someone who...</h4>
-        <div *ngIf="incompletion"><br><br>
-          <div class="alert alert-danger">{{ incompletion }}</div><br>
-        </div>
       </div>
       <div *ngIf="!doMe">
         <h4>{{profile.screen_name}} sees themselves as someone who...</h4>
       </div>
       <table>
         <tr *ngFor="let q of globalService.b5a; let i = index; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
-          <td>{{q}}</td>
+          <td>{{i + 1}} {{q}}</td>
           <td>Strongly Disagree</td>
           <td *ngFor="let item of range">
-            <input type="radio" [name]="'b' + i" class="bigradio" (click)="b5r[i] = item" [checked]="item === b5r[i]" [disabled]="!doMe">
+            <input type="radio" [name]="'b' + i" class="bigradio" (click)="b5r[i] = item" [checked]="item == b5r[i]" [disabled]="!doMe">
           </td>
           <td>Strongly Agree</td>
         </tr>
@@ -52,16 +86,15 @@
       </div>
       <table>
         <tr *ngFor="let q of globalService.ia; let i = index; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
-          <td>{{q}}</td>
+          <td>{{i + 45}}. {{q}}</td>
           <td>Way too little</td>
           <td *ngFor="let item of range">
-            <input type="radio" [name]="'i' + i" class="bigradio" (click)="ir[i] = item" [checked]="item === ir[i]" [disabled]="!doMe">
+            <input type="radio" [name]="'i' + i" class="bigradio" (click)="ir[i] = item" [checked]="item == ir[i]" [disabled]="!doMe">
           </td>
           <td>Way too much</td>
         </tr>
       </table><br>
       <div *ngIf="doMe">
-        <div *ngIf="incompletion" class="alert alert-danger">{{incompletion}}</div>
         <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
       </div>
     </tab>

@@ -369,18 +369,39 @@
         </div>
         <h5><a (click)="show === 19 ? show = 0 : show = 19">What's the end-game and when will it come?</a></h5>
         <div *ngIf="show === 19">
-            <p>The goal is to replace <em>all</em> of our existing misrepresentative democracies with this next-generation system,
-                world wide. When this transition will be complete is impossible to predict, but it will be years to decades
-                from now. The sequence of events will be that the number of citizens participating in this system will eventually
-                grow to the point that the majority of them are represented in one or more Localities. At that point a simple
-                vote will transfer power for final decisions of &quot;the government&quot; directly to The People, rendering
-                their elected legislative officials and those offices obsolete. Because those representatives will be closely
-                following this process and adjusting their behavior accordingly (to facilitate their being re-electable)
-                the transition will be gradual and in most cases undetectable. In the end, the same people who work in the
-                executive and judicial branches of government will continue to do so, only the decisionmakers (the elected
-                legislators) will be replaced. All the existing laws, policies, taxation and public support systems, and
-                infrastructure will carry over, although of course some of these will subsequently be changed by The People
-                as they vote to do so.</p>
+            <p>The goal is to replace the legislative branch of <em>all</em> of our existing misrepresentative democracies with
+                this next-generation system, world wide. When this transition will be complete is impossible to predict,
+                but it will be years to decades from now. This will ensure that the process is gradual and that people will
+                have time to get used to the idea before the old system is completely replaced by the new one. Note that
+                the executive and judicial branches of government will continue to operate as they do now for the most part,
+                also ensuring stability and continuity during the transition.</p>
+            <p>At first this new system will primarily be a source of new and oftentimes unconventional proposals and The People’s
+                evaluations of them. As the number of people using it grows this system will gradually begin to replace slacktivism
+                (petition-oriented) and polling organizations because of the greater diversity and consistency of the participation
+                rates of the people here: Everyone effectively votes on everything, rather than having the “voting” done
+                by extremists or demographic outliers as is the case for slacktivism sites and polling that relies on people
+                answering land-line phones. Politicians will increasingly start paying attention to the outcomes when this
+                threshold is reached. Some will submit their own proposals to this system instead of the old one to gain
+                preliminary support, and others will voluntarily commit to casting votes to reflect the Will of The People
+                as recorded here.</p>
+            <p>Another milestone will occur when participation rates approach 25% in some locality, as this is the range of
+                popular approval in existing misrepresentative democracies (51% approval when less than 50% of those eligible
+                to vote participate). Proxyfor.me will at that point be more legitimate than the existing system because of
+                the psychological/ideological breadth of the participants, at least for proposals that pass with large supermajorities.
+                Politicians will increasingly call for controversial proposals to be voted on here rather than taking the
+                risk of voting on something themselves.</p>
+            <p>When participation rates approach 50% in some locality the dynamic changes again because the new system <em>becomes</em>
+                the legitimate decisionmaking system for that locality. At that point it will merely be a matter of organizing
+                the transfer of power to the new system and the shutting down of the old one.</p>
+            <p>There is one possible exception to this evolutionary process: When a coup/revolution/counter-revolution occurs
+                in a locality with a significant participation rate. In that case the new system may be called on to take
+                over decisionmaking in a matter of days or weeks rather than years. This system has been designed to accommodate
+                this need, but it will still require a leap of faith from the population. It is perhaps worth all of us considering
+                what we would do if we found ourselves in this situation: If your local/state/national government were to
+                somehow become non-functional, and especially if crucial infrastructure (power, Internet service, etc.) is
+                also shut down, would you prefer to transfer control to whoever tries to claim authority and fill the power
+                vacuum, or would you maybe prefer to rely on the people who are psychologically much more similar to you
+                but who may live in other countries?</p>
         </div>
         <h5><a (click)="show === 20 ? show = 0 : show = 20">Replace all governments? Surely you jest...</a></h5>
         <div *ngIf="show === 20">
@@ -492,9 +513,9 @@
         <p></p>
         <p>For those who want to validate the operation of the system, the full source for both the client and server components
             of proxyfor.me are available on GitHub as <a href="https://github.com/metamerman/proxyfor.me" target="_blank">https://github.com/metamerman/proxyfor.me</a>.
-            This is an open source project and is distributed under a very permissive license to ensure that anyone
-            who wants to can verify correct operation or produce derivative systems to test new ideas. Contributions are
-            welcome!</p>
+            This is an open source project and is distributed under a very permissive license to ensure that anyone who wants
+            to can verify correct operation or produce derivative systems to test new ideas. Contributions are welcome!
+        </p>
         <p>The results of each decision are produced automatically as the closing emails are being sent out and stored in the
             "results" directory. There are three files for each closed proposal: proposal.json, directvotes.txt, and proxyvotes.txt.
             The latter two are tab-delimited files containing a timestamp, screen name, vote, and the two sets of matching
@@ -523,12 +544,12 @@
             can grow to accommodate however many people sign up (up to billions!), although at some point external funding
             (probably crowdfunding) will be necessary to continue to grow.</p>
         <p>There are several limitations in the design that are being imposed by the Angular 2 router which is pretty weak:
-            There seems to be no way to make bookmarks to internal &quot;pages&quot; work, nor is it straightforward to create
+            There seems to be no way to make bookmarks to internal URLs work, nor is it straightforward to create
             internal links from within proposals or posts. It is also necessary to open links in a new tab or window, since
             the browser &quot;back&quot; button can lead to unexpected results otherwise (the output of the &quot;marked&quot;
             library has been hacked to ensure this when linking from proposals or posts). Eventually a new Angular router
             will become available (though a schedule for that has not been released yet) at which point those features will
             be added.</p>
-        <p></p>
+        <p>Beta 2 introduced miniprofiles (matches can be made with the most predictive 6 items in the full profile).</p>
     </tab>
 </tabs>

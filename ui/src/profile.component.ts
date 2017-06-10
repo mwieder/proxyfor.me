@@ -17,9 +17,14 @@ export class amProfileComponent implements OnInit {
   profile = new amProfile(undefined);
   votes: amVote[];
   posts: amPost[];
-  range = "1 2 3 4 5 6 7".split(' ');
+  range = [1, 2, 3, 4, 5, 6, 7];
   b5r: string[] = [];
   ir: string[] = [];
+  // miniprofile 3c, 20o, 7a(r), 46 (children), 50 (defense), 58 (environment)
+  mini_b5a: string[] = [];
+  mini_b5i = [2, 6, 19];
+  mini_ia: string[] = [];
+  mini_ii = [1, 5, 13];
   incompletion: string;
   doMe: boolean;
   formL: FormGroup;
@@ -55,8 +60,14 @@ export class amProfileComponent implements OnInit {
     this.votes = undefined;
     this.posts = undefined;
     if (!this.globalService.b5a) {
-      this.profileService.getText("big5.txt").then(result => this.globalService.b5a = result.split("\n"));
-      this.profileService.getText("ideology.txt").then(result => this.globalService.ia = result.split("\n"));
+      this.profileService.getText("big5.txt").then(result => {
+        this.globalService.b5a = result.split("\n");
+        this.mini_b5i.forEach(i => { this.mini_b5a[i] = this.globalService.b5a[i]; });
+      });
+      this.profileService.getText("ideology.txt").then(result => {
+        this.globalService.ia = result.split("\n");
+        this.mini_ii.forEach(i => { this.mini_ia[i] = this.globalService.ia[i]; });
+      });
     }
     this.route.params
       .switchMap((params: Params) => this.profileService.getProfile(params['sn']))
@@ -66,13 +77,16 @@ export class amProfileComponent implements OnInit {
         this.ir = this.profile.ideology.split("");
         if (this.profile.screen_name === this.globalService.myProfile.screen_name) {
           this.doMe = true;
-          this.globalService.activeTab = "Matching";
+          if (this.profile.big5.startsWith("0000000000000000000000")) // blank profile
+            this.globalService.activeTab = "Mini Match";
+          else
+            this.globalService.activeTab = "Full Match";
         }
         else {
           this.doMe = false;
           this.globalService.activeTab = "Votes";
         }
-        
+
         this.buildFormL();
         this.loadVotes(); // may want to delay these eventually
         this.loadPosts();
@@ -83,29 +97,13 @@ export class amProfileComponent implements OnInit {
     return this.globalService.proposalHeads.find(tp => tp.id === pid).title;
   }
 
-  setStatus(): void  {
-    let index = this.profile.big5.indexOf("0");
-    if (index === -1) {
-      index = this.profile.ideology.indexOf("0");
-      if (index !== -1)
-        index += this.profile.big5.length;
-    }
-    if (index++ !== -1)
-      this.incompletion = "Item " + index + " is required";
-    else
-      this.incompletion = undefined;
-  }
-
   save(): void {
     this.profile.big5 = this.b5r.join("");
     this.profile.ideology = this.ir.join("");
     this.globalService.myProfile = this.profile;
-    this.setStatus();
 
     this.profileService.saveProfile(this.profile).catch(e => this.handleError(e));
-
-    if (!this.incompletion)
-      this.globalService.activeTab = "Locality";
+    this.globalService.activeTab = "Locality";
   }
 
   exclude(): void {
@@ -123,14 +121,14 @@ export class amProfileComponent implements OnInit {
     this.profileService.saveProfile(this.globalService.myProfile).catch(e => this.handleError(e));
   }
 
-  loadVotes(): void  {
+  loadVotes(): void {
     if (!this.votes)
       this.profileService.getVotes(this.profile.screen_name)
         .then(v => this.votes = v)
         .catch(e => this.handleError(e));
   }
 
-  loadPosts(): void  {
+  loadPosts(): void {
     if (!this.posts)
       this.profileService.getPosts(this.profile.screen_name)
         .then(p => this.posts = p)
@@ -192,7 +190,7 @@ export class amProfileComponent implements OnInit {
     });
   }
 
-  onSubmitL(): void  {
+  onSubmitL(): void {
     if (this.globalService.validate(this.formL, this.formErrorsL, this.validationMessagesL)) {
       this.globalService.myProfile.city = this.formL.value.city;
       this.globalService.myProfile.state = this.formL.value.state;
@@ -203,10 +201,10 @@ export class amProfileComponent implements OnInit {
     }
   }
 
-  onSubmitC(): void  {
+  onSubmitC(): void {
     if (this.globalService.validate(this.formC, this.formErrorsC, this.validationMessagesC)) {
       let p: amUpdateProfile = new amUpdateProfile();
-      p.screen_name = this.globalService.myProfile.screen_name;      
+      p.screen_name = this.globalService.myProfile.screen_name;
       p.oldpw = this.formC.value.oldpw;
       p.email = this.formC.value.email;
       p.phone = this.formC.value.phone;
@@ -215,7 +213,7 @@ export class amProfileComponent implements OnInit {
     }
   }
 
-  onSubmitP(): void  {
+  onSubmitP(): void {
     if (this.globalService.validate(this.formP, this.formErrorsP, this.validationMessagesP)) {
       let p: amUpdateProfile = new amUpdateProfile();
       p.screen_name = this.globalService.myProfile.screen_name;
@@ -225,7 +223,7 @@ export class amProfileComponent implements OnInit {
     }
   }
 
-  update(p: amUpdateProfile): void  {
+  update(p: amUpdateProfile): void {
     this.active = false;
     this.profileService.updateProfile(p)
       .then(() => this.alertService.success("Profile update succeeded!"))

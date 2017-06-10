@@ -1,31 +1,31 @@
-45. Immigrants and refugees
-46. Children's health and welfare
-47. Minimizing degree of economic inequality
-48. Education
-49. Crime and loss prevention (via police and criminal courts)
-50. National security/defense
-51. Acquisition/maintenance of park land
-52. Economic incentives and protections for corporations
-53. Infrastructure development/maintenance
-54. Scientific and technological research
-55. Maximizing the efficiency of government and/or minimizing deficits/debt
-56. Trade policy and economic protectionism
-57. An independent press/media
-58. Protecting the environment
-59. Enforcing moral codes, or facilitating this via organized religion
-60. Economic protection for individuals (via regulation, and civil courts)
-61. Increasing general happiness and decreasing level of stress or fear
-62. Maximizing personal freedom
-63. Improving health care access, quality, and efficiency
-64. Maximizing personal economic efficiency (tax rates, commute times, etc.)
-65. Disaster recovery, loss prevention, and infrastructure resilience
-66. Mental illness and addiction treatment
-67. Maximizing the median standard of living
-68. Preservation of cultures and traditions
-69. Increasing overall economic efficiency or GDP
-70. Improving individual health, safety, and/or lifespan
-71. Age and benefit level for retirement
-72. Managing per capita resource consumption (energy, land, minerals, etc.)
-73. Ensuring a minimum standard of living
-74. Diplomacy and international aid
-75. Compensating for individuals with disabilities
+Immigrants and refugees
+Children's health and welfare
+Minimizing degree of economic inequality
+Education
+Crime and loss prevention (via police and criminal courts)
+National security/defense
+Acquisition/maintenance of park land
+Economic incentives and protections for corporations
+Infrastructure development/maintenance
+Scientific and technological research
+Maximizing the efficiency of government and/or minimizing deficits/debt
+Trade policy and economic protectionism
+An independent press/media
+Protecting the environment
+Enforcing moral codes, or facilitating this via organized religion
+Economic protection for individuals (via regulation, and civil courts)
+Increasing general happiness and decreasing level of stress or fear
+Maximizing personal freedom
+Improving health care access, quality, and efficiency
+Maximizing personal economic efficiency (tax rates, commute times, etc.)
+Disaster recovery, loss prevention, and infrastructure resilience
+Mental illness and addiction treatment
+Maximizing the median standard of living
+Preservation of cultures and traditions
+Increasing overall economic efficiency or GDP
+Improving individual health, safety, and/or lifespan
+Age and benefit level for retirement
+Managing per capita resource consumption (energy, land, minerals, etc.)
+Ensuring a minimum standard of living
+Diplomacy and international aid
+Compensating for individuals with disabilities

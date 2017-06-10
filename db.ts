@@ -28,6 +28,8 @@ const arq = [2, 12, 27, 37];
 const nq = [4, 14, 19, 29, 39];
 const nrq = [9, 24, 34];
 
+// miniprofile 3c, 20o, 7a(r), 46 (children), 50 (defense), 58 (environment)
+
 // parameters for matching
 const nmatches = 5;
 const nb = 44;
@@ -204,34 +206,44 @@ function createbots() {
 }
 
 // turn raw sum of squares diff into rough 0-100 match quality
-function scale_match(diff: number): number {
-    return Math.round(Math.min(100, Math.max(0, 97 - (Math.sqrt(diff) - 9.6) * 4.4)));
+function scale_match(diff: number, nq: number): number {
+    return Math.round(Math.min(100, Math.max(0, 97 - (Math.sqrt(diff * (nb + ni) / nq) - 9.6) * 4.4)));
 }
 
 function calculateMatch(p1: amProfile, p2: amProfile): number {
     let source: string = p1.big5;
     let ref: string = p2.big5;
+    let sc, rc: number;
     let j: number, diff: number;
     let tdiff: number = 0;
+    let nm: number = 0;
 
     for (j = 0; j < nb; j++) {
-        diff = source.charCodeAt(j) - ref.charCodeAt(j);
-        tdiff += diff * diff;
+        sc = source.charCodeAt(j);
+        rc = ref.charCodeAt(j);
+        if (sc != 48 && rc != 48) {
+            diff = sc - rc;
+            tdiff += diff * diff;
+            nm++;
+        }
     }
     source = p1.ideology;
     ref = p2.ideology;
     for (j = 0; j < ni; j++) {
-        diff = source.charCodeAt(j) - ref.charCodeAt(j);
-        tdiff += diff * diff;
+        sc = source.charCodeAt(j);
+        rc = ref.charCodeAt(j);
+        if (sc != 48 && rc != 48) {
+            diff = sc - rc;
+            tdiff += diff * diff;
+            nm++;
+        }
     }
-    return scale_match(tdiff);
+    return scale_match(tdiff, nm);
 }
 
 function calculateMatches(profile: amProfile, pver: number, voters: amVote[]): amProxyMatch[] {
     let i: number, j: number;
     let matches: amProxyMatch[] = [];
-    if (profile.big5.includes("0") || profile.ideology.includes("0"))
-        return matches; // incomplete profile
 
     for (i = 0; i < nmatches + 1; i++)
         matches[i] = new amProxyMatch();
@@ -246,30 +258,42 @@ function calculateMatches(profile: amProfile, pver: number, voters: amVote[]): a
         else
             if (voters[i].vote != "A" && voters[i].version === pver
                 && (!profile.exclude || !profile.exclude.includes(voters[i].screen_name))) {
-                let tdiff: number = 0;
                 let diff: number;
                 let source: string = profile.big5;
                 let ref: string = voters[i].big5;
+                let tdiff: number = 0;
+                let sc, rc: number;
+                let nm: number = 0;
+
                 for (j = 0; j < nb; j++) {
-                    diff = source.charCodeAt(j) - ref.charCodeAt(j);
-                    tdiff += diff * diff;
+                    sc = source.charCodeAt(j);
+                    rc = ref.charCodeAt(j);
+                    if (sc != 48 && rc != 48) {
+                        diff = sc - rc;
+                        tdiff += diff * diff;
+                        nm++;
+                    }
                 }
-                source = profile.ideology;
-                ref = voters[i].ideology;
                 for (j = 0; j < ni; j++) {
-                    diff = source.charCodeAt(j) - ref.charCodeAt(j);
-                    tdiff += diff * diff;
+                    sc = source.charCodeAt(j);
+                    rc = ref.charCodeAt(j);
+                    if (sc != 48 && rc != 48) {
+                        diff = sc - rc;
+                        tdiff += diff * diff;
+                        nm++;
+                    }
                 }
                 if (tdiff < matches[4].diff) {
                     matches[4].index = i;
                     matches[4].diff = tdiff;
+                    matches[4].nm = nm;
                     matches.sort((a, b) => a.diff - b.diff)
                 }
             }
     }
     for (i = 0; i < 5; i++) {
         if (matches[i].diff < Number.MAX_VALUE) {
-            matches[i].diff = scale_match(matches[i].diff);
+            matches[i].diff = scale_match(matches[i].diff, matches[i].nm);
             matches[i].screen_name = voters[matches[i].index].screen_name;
             matches[i].vote = voters[matches[i].index].vote;
         }
@@ -442,6 +466,10 @@ function emailResults() {
     });
 }
 
+// function repchar(dest: string, source: string, index: number) {
+//     return dest.substring(0, index) + source.substring(index, index + 1) + dest.substring(index + 1);
+// }
+
 function loadcaches(resolve: any, reject: any) {
     db.collection("Proposal").find({}, headFieldSpec).sort({ order: -1 })
         .toArray()
@@ -457,6 +485,35 @@ function loadcaches(resolve: any, reject: any) {
                 .catch(e => reject(e));
         })
         .catch(e => reject(e));
+
+// Code to check mini against full match
+    // db.collection("Profile").find().toArray().then(p => {
+    //     let i, j;
+    //     let mp: amProfile = new amProfile("temp");
+    //     let ndiffs = 0;
+    //     let fulldiff = 0;
+    //     let minidiff = 0;
+    //     let diffdiff = 0;
+    //     for (i = 202; i < p.length; i++) {
+    //         // miniprofile 3c, 20o, 7a(r), 46 (children), 50 (defense), 58 (environment)
+    //         mp.big5 = lotsazeros.substr(0, nb);
+    //         mp.big5 = repchar(mp.big5, p[i].big5, 2);
+    //         mp.big5 = repchar(mp.big5, p[i].big5, 6);
+    //         mp.big5 = repchar(mp.big5, p[i].big5, 19);
+    //         mp.ideology = lotsazeros.substr(0, ni);
+    //         mp.ideology = repchar(mp.ideology, p[i].ideology, 1);
+    //         mp.ideology = repchar(mp.ideology, p[i].ideology, 5);
+    //         mp.ideology = repchar(mp.ideology, p[i].ideology, 13);
+    //         for (j = i + 1; j < p.length; j++) {
+    //             ndiffs++;
+    //             fulldiff = calculateMatch(p[i], p[j]);
+    //             minidiff = calculateMatch(mp, p[j]);
+    //             console.log(p[i].screen_name, p[j].screen_name, fulldiff, minidiff);
+    //             diffdiff += Math.abs(fulldiff - minidiff);
+    //         }
+    //     }
+    //     console.log(diffdiff / ndiffs);
+    // });
 }
 
 export function init(): Promise<boolean> {

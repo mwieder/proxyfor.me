@@ -126,7 +126,12 @@
         <a routerLink="/profile">Fill out profile to vote</a>
       </div>
       <div *ngIf="matches?.length > 0">
-        <label>Your proxies:</label>
+        <div *ngIf="globalService.myProfile.big5.indexOf('0') != -1">
+          <label>Your proxies (Mini Match):</label>
+        </div>
+        <div *ngIf="globalService.myProfile.big5.indexOf('0') == -1">
+          <label>Your proxies:</label>
+        </div>
         <nav>
           <span *ngFor="let match of matches">
             <span *ngIf="match.screen_name">

@@ -1,6 +1,6 @@
 <nav>
   <ul>
-    <li><span class="title">proxyfor.me (Beta 1)</span></li>
+    <li><span class="title">proxyfor.me (Beta 2)</span></li>
     <li><span [hidden]="!globalService.myProfile.screen_name"><a (click)="logout()">Log out</a></span></li>
     <span *ngIf="globalService.myProfile.screen_name === 'gm'">
       <a [routerLink]="['/edit/profile']">Edit Profile...</a>

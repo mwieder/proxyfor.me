@@ -118,6 +118,7 @@ export class amUpdateProfile {
 export class amProxyMatch {
     index: number;
     diff: number;
+    nm: number;
     version: number;
     screen_name: string;
     vote: string;

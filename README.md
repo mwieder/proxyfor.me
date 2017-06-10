@@ -26,6 +26,8 @@ Need to make registration and voting more bot-resistant (captcha, email validati
 
 Bundle the client into apps that can be distributed in the Apple and Google app stores and then extend those apps to take advantage of native features (e.g., via PhoneGap).
 
+Expand admin features and ui (monitoring, add/edit/delete profiles, etc.)
+
 Create a budgeting system so that the same mechanism used for proposal matching can be applied to tweaking and approving a budget.
 
 Eventually the system will need to be extended to support acquisition and maintenance of Credentials and for maintaining tax and health-care records.

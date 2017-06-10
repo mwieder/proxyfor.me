@@ -11,7 +11,8 @@
     "u": "cd ui && uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js",
     "g1": "cd ui/dist && gzip -k -f bundle.min.js",
     "g2": "cd ui/src && gzip -k -f *.css *.html && mv *.gz ..",
-    "build": "npm run b && npm run u && npm run g1 && npm run g2"
+    "build": "npm run b && npm run u && npm run g1 && npm run g2",
+    "gzipshim": "cd node_modules && gzip -k core-js/client/shim.min.js zone.js/dist/zone.js reflect-metadata/Reflect.js systemjs/dist/system.src.js"
   },
   "dependencies": {
     "@angular/common": "^2.4.8",
@@ -47,6 +48,6 @@
     "@types/core-js": "^0.9.35",
     "browserify": "^14.1.0",
     "typescript": "^2.3.3",
-    "uglifyjs": "^2.4.10"
+    "uglify-js": "^3.0.15"    
   }
 }

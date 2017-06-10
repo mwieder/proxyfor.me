@@ -95,10 +95,24 @@ export class amProposalComponent implements OnInit {
             this.globalService.logout();
           else {
             this.matches = matches;
-            if (matches.length != 0) { // 0 means incomplete profile
+            if (matches.length != 0) { // 0 means no profile
               let i: number;
               let total: number = 0;
               this.directvote = matches[matches.length - 1].vote;
+  // stuff for feedback on number of items matched
+  // setStatus(): void {
+  //   let index = this.profile.big5.indexOf("0");
+  //   if (index === -1) {
+  //     index = this.profile.ideology.indexOf("0");
+  //     if (index !== -1)
+  //       index += this.profile.big5.length;
+  //   }
+  //   if (index++ !== -1)
+  //     this.incompletion = "Item " + index + " is required";
+  //   else
+  //     this.incompletion = undefined;
+  // }
+
               this.directversion = matches[matches.length - 1].version;
               matches.length = matches.length - 1;
               for (i = 0; i < matches.length; i++)
