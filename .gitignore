@@ -8,6 +8,7 @@ ui/**/*.map
 ui/src/*.js
 ui/src/*.map
 ui/dist/*.*
+aws-ses-config.json
 node_modules
 dump
 results
